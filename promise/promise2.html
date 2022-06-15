@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 5px solid #000;
+        }
+        .one{
+            width: 600px;
+            height: 100px;
+            border: 1px solid red;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+  
+    <script>
+        const box= document.querySelector('.box');
+
+        const fnc = ()=>{
+            return new Promise((resolve,reject)=>{
+                resolve();
+                //reject();
+            })
+        }  // 이걸 생성해주지 않아도 fetch문법으로 생성할 수 있음.
+            // fetch문법 안에는 promise가 이미 들어있음
+        const mkElement = (num)=>{
+            let mkDiv = document.createElement('div');
+                mkDiv.setAttribute('class','one')  
+                mkDiv.innerText=num;
+                box.append(mkDiv) 
+        }   
+        
+        fnc() //1
+
+        .then(()=>{ //2
+                mkElement('1')
+            } 
+        )
+        .then(()=>{  //3
+            mkElement('2')
+            } 
+        )
+        .then(()=>{ //4
+            mkElement('3')
+            } 
+        ) 
+        .then(()=>{ //5
+            mkElement('4')
+            } 
+        ).catch((error)=>{
+            console.log('너 틀렸어')
+        })
+        
+    </script>
+</body>
+</html>

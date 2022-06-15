@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 5px solid #000;
+        }
+        .one{
+            width: 600px;
+            height: 100px;
+            border: 1px solid red;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+  
+    <script>
+        const box= document.querySelector('.box');
+        const data=  ['./jsonData-1.json','./jsonData-2.json','./jsonData-3.json','./jsonData-4.json'];
+
+        
+        const mkElement = (num)=>{
+            let mkDiv = document.createElement('div');
+                mkDiv.setAttribute('class','one')  
+                mkDiv.innerText=num;
+                box.append(mkDiv)    
+        }  
+       
+        fetch(data[0])
+        .then(()=>{mkElement('1')});
+       
+        fetch(data[1])
+        .then(()=>{mkElement('2')});
+
+        fetch(data[2])
+        .then(()=>{mkElement('3')});
+
+        fetch(data[3])
+        .then(()=>{mkElement('4')});
+
+        //각각 다른 데이터를 불러오기 떄문에 따로 나눠서 써준것임
+        //하나의 데이터를 불러오면 하나로 써도 됨
+        //데이터를 읽어오는 순서가 다르기 때문에 불러올때마다 순서가 다름
+        //fetch가 중첩되는 것을 해결하기 위해 생겨난 게 async / await
+        
+    </script>
+</body>
+</html>

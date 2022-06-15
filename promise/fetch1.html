@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 단순히 내부적으로 수행할때도 사용하지만 
+        // 외부적으로 데이터를 불러올 때 fetch 사용
+        
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then((response)=>{  // response : 위의 결과를 받아오는 것
+           // console.log(response)
+            response.json()  // response는 이 단계를 꼭 거쳐야함 / fetch는 이 단계 없어도 됨 
+        })
+        .then((data)=>{
+            console.log(data)
+        }).catch((error)=>{
+            console.log(error)
+        }) 
+        
+
+    </script>
+</body>
+</html>

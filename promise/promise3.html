@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 5px solid #000;
+        }
+        .one{
+            width: 600px;
+            height: 100px;
+            border: 1px solid red;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+  
+    <script>
+        const box= document.querySelector('.box');
+
+        
+        const mkElement = (num)=>{
+            let mkDiv = document.createElement('div');
+                mkDiv.setAttribute('class','one')  
+                mkDiv.innerText=num;
+                box.append(mkDiv)    
+        }  
+        // fetch() 이렇게만 쓰면 안됨. 무조건 한계의 arg 필요함. 아무거나 넣어도 실행은 됨. fetch('1') 단 페이지가 없기 떄문에 에러
+       // fetch문법 안에는 promise가 이미 들어있음 / fetch = promise
+        fetch('1') // fetch는 괄호 안에 argument를 넣어줘야 사용 가능
+        .then(()=>{ 
+                mkElement('1')
+            } 
+        )
+        .then(()=>{  
+            mkElement('2')
+            } 
+        )
+        .then(()=>{
+            mkElement('3')
+            } 
+        ) 
+        .then(()=>{ 
+            mkElement('4')
+            } 
+        ).catch((error)=>{
+            console.log(error)
+        })
+        
+    </script>
+</body>
+</html>
